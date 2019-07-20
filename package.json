@@ -1,0 +1,19 @@
+{
+  "name": "node.jsmongodb",
+  "version": "1.0.0",
+  "description": "Esta es una practica de Node.JS ~ MongoDB ",
+  "main": "Collection.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.2.5",
+    "mongoose": "^5.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "Nota": "Ejecuta esta aplicacion desde el Live Server de VS_Code"
+  },
+  "author": "William Mosquera Machado",
+  "license": "ISC"
+}

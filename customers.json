@@ -1,0 +1,11 @@
+
+{
+"customers" : [
+    { "_id": 1, "product_id": 154, "status": 1 },
+    { "_id": 2, "product_id": 152, "status": 0 },
+    { "_id": 3, "product_id": 160, "status": 1 },
+    { "_id": 4, "product_id": 155, "status": 0 },
+    { "_id": 5, "product_id": 167, "status": 1 },
+    { "_id": 6, "product_id": 151, "status": 0 }
+  ]
+}

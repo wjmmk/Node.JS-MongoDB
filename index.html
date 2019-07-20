@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Node.js ~ MongoDB ~ Atlas</title>
+    <!-- BOOTSTRAP CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+    <!-- ANIMATE.CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="public/css/main.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:24px 0;">
+        <div><a class="navbar-nav ml-auto nav-item nav-link" href="/"><img class="animated bounceIn"
+                    src="public/img/Node.js.png" alt="First slide"></a></div>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navb">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/products" class="nav-link">
+                        Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="javascript:void(0)">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="button">Search</button>
+            </form>
+        </div>
+    </nav><br>
+    <!-- Esta es la parte de codigo relacionada al texto de la pagina Web-->
+    <h1>Aplicacion que se conecta a MongoDB Atlas ~ CRUD </h1><br><br>
+
+    <div class="container">
+
+        <span>Este ejemplo permite acceder a la herramienta <strong>MongoDB Atlas</strong> y realizar ya sea Consultas,
+            Inserciones, Actulizaciones, Borrado y Uniones (Join) a un cluster de <strong>Bases de Datos</strong>
+            alojadas
+            en la Nube. Servicio que proporciona <strong>AWS</strong>(Amazon Web Services) y su integracion con
+            <strong>MongoDB</strong>.
+        </span><br><br>
+
+        <span class="h2">La aplicacion permite realizar las siguientes acciones.</span><br><br>
+
+        <span>
+            <ul>
+                <li>Crear BD y conexion a la Base de Datos.</li><br>
+
+                <span>// Configuracion para conectar con MongoDB Atlas en Red. <br>
+                    var mongoose = require('mongoose'); <br>
+                    var MongoClient = require('mongodb').MongoClient; <br>
+                    var url =
+                    "mongodb+srv://"Usuario:"Clave"@locallibrary-syvnh.mongodb.net/test?retryWrites=true&w=majority";
+                    <br>
+
+
+                    MongoClient.connect(url, function(err, db) { <br>
+                    if (err) throw err; <br>
+                    var dbo = db.db("mydb"); <br>
+                    dbo.createCollection("customers", function(err, res) { <br>
+                    if (err) throw err; <br>
+                    console.log("Collection created!"); <br>
+                    db.close(); <br>
+                    });
+                    });</span>
+            </ul>
+        </span>
+
+        <span>
+            <ul>
+                <li>Insertar datos o información en las Bases de Datos.</li><br>
+
+                <span>// Configuracion para conectar con MongoDB Atlas en Red. <br>
+                    var mongoose = require('mongoose'); <br>
+                    var MongoClient = require('mongodb').MongoClient; <br>
+                    var url =
+                    "mongodb+srv://"Usuario:"Clave"@locallibrary-syvnh.mongodb.net/test?retryWrites=true&w=majority";
+                    <br>
+
+
+                    // Con este codigo se Inserta la Coleccion Clientes ó Customers <br>
+                    MongoClient.connect(url, function(err, db) { <br>
+                    if (err) throw err; <br>
+                    var dbo = db.db("mydb"); <br>
+                    var myobj = [ <br>
+                    { name: 'John', address: 'Highway 71'}, <br>
+                    { name: 'Peter', address: 'Lowstreet 4'}, <br>
+                    { name: 'Amy', address: 'Apple st 652'}, <br>
+                    { name: 'Hannah', address: 'Mountain 21'}, <br>
+                    { name: 'Michael', address: 'Valley 345'}, <br>
+                    { name: 'Sandy', address: 'Ocean blvd 2'}, <br>
+                    { name: 'Betty', address: 'Green Grass 1'}, <br>
+                    { name: 'Richard', address: 'Sky st 331'}, <br>
+                    { name: 'Susan', address: 'One way 98'}, <br>
+                    { name: 'Vicky', address: 'Yellow Garden 2'}, <br>
+                    { name: 'Ben', address: 'Park Lane 38'}, <br>
+                    { name: 'William', address: 'Central st 954'}, <br>
+                    { name: 'Chuck', address: 'Main Road 989'}, <br>
+                    { name: 'Viola', address: 'Sideway 1633'} <br>
+                    ]; <br>
+                    dbo.collection("customers").insertMany(myobj, function(err, res) { <br>
+                    if (err) throw err; <br>
+                    console.log("Number of documents inserted: " + res.insertedCount); <br>
+                    db.close(); <br>
+                    });
+                    });
+                </span>
+            </ul>
+        </span><br>
+
+        <!-- Codigo que muestra en pantalla la informacion Sustraída del Servidor-->
+        <div class="container-fluid">
+            <h4>Codigo que muestra en pantalla la informacion Sustraída del Servidor</h4><br>
+            <ul id="mongo"></ul>
+        </div>
+        <!-- Codigo del IFRAME-->
+        <div class="container-fluid">
+            <h3>Scraping ~ Web.</h3>
+            <p class="lead">Este es un Iframe que te permite visualizar la pagina web de estudio; donde se puede
+                constatar
+                la información sustraída de la misma, por medio de la realización de la tecnica Scraping.</p>
+        </div>
+        <br>
+        <div class="container">
+            <iframe height="500px" width="100%" class="frame"
+                src="https://computacion.mercadolibre.com.co/portatiles/_Desde_101" name="iframe_a"></iframe>
+            <p id="willy"><a href="https://computacion.mercadolibre.com.co/portatiles/_Desde_101"
+                    target="iframe_a">Resultado de la
+                    consuta realizada.</a></p>
+        </div><br><br>
+
+
+        <!-- Formulario Validador de E-mail. -->
+
+        <span class="h3">Pequeño ejemplo de como implementar un Validador de E~mail.</span><br><br>
+        <span>En esta sección se da un ejemplo realcionado con la validacion de un E-mail ingresado
+            correctamente o no dentro de un formulario web; esto con el fin de enseñar como
+            se implementan este tipo de VALIDADIONES.</span><br><br>
+
+        <div class="container-fluit">
+            <form>
+                <p>Enter an email address:</p>
+                <input id='email'>
+                <button type='submit' id='validate'>Validate!</button>
+            </form><br>
+            <h2 id='result'></h2>
+        </div><br>
+
+
+        <!-- Texto final de relacionado con la pagina web.-->
+        <span><strong>Express</strong>.js ha demostrado, con el tiempo, que su popularidad vale la pena con sus métodos
+            y funciones
+            fáciles de usar.
+            Probablemente sea el marco Node.js más popular disponible para la comunidad de JavaScript en GitHub con más
+            de 41,000 estrellas
+            [estrellas de Github: 41,036].</span><br><br>
+
+        <p><strong>Nota:</strong> Se recomienda para el normal funcionamiento de esta <strong>App</strong>. Que en tu
+            Editor de Codigo tengas
+            instalado alguna aplicacion que permita simular un servidor como:
+            <strong>Live Server</strong> de <strong>VS_Code</strong> (Visual Studio Code) o el que sea correspondiente
+            al Editor de Codigo de tu gusto.</p><br>
+    </div>
+
+
+    <!-- Esta es una especie de footer especial -->
+    <hr>
+    <div class="container-fluit">
+        <footer class="bg-light text-center navbar-dark bg-dark p-2">
+            <p class="h4 text-white">Copyright &copy; 2019</p>
+        </footer>
+    </div>
+    <hr>
+
+    <script>
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var respuesta = JSON.parse(xhttp.responseText);
+                    var customers = respuesta.customers;
+    
+                    var salida = '';
+                    for (var i = 0; i < customers.length; i++) {
+                        salida += `<li>codigo N° ${customers[i]._id} ~ su nickname es ${customers[i].product_id}
+                            y su Estado es ${customers[i].status}</li>`;
+                    }
+                    document.getElementById('mongo').innerHTML = salida;
+                }
+            };
+            xhttp.open("GET", "customers.json", true);
+            xhttp.send();
+        </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+</body>
+<!-- ARCHIVOS JAVASCRIPT EXTERNOS-->
+<script type="text/javascript" src="/find.js"></script>
+<script type="text/javascript" src="/customers.json"></script>
+<script type="text/javascript" src="/Validar-Email.js"></script>
+
+</html>
