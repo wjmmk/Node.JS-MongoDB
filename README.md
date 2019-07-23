@@ -1,3 +1,3 @@
 # Node.JS-MongoDB
-![](./public/img/vista - 1.png)
+![](./public/img/Vista - 1.png)
 
