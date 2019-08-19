@@ -4,6 +4,8 @@
   "description": "Esta es una practica de Node.JS ~ MongoDB ",
   "main": "Collection.js",
   "dependencies": {
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "mongodb": "^3.2.5",
     "mongoose": "^5.6.5"

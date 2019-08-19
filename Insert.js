@@ -1,15 +1,31 @@
-/*  // Configuracion para mongoDB localmente
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-*/
+require('dotenv').config();// Con esta linea logramos cargar en nuestro programa las variables del archivo .env
 
-  // Configuracion para conectar con MongoDB Atlas en Red.
+// Configuracion para conectar con MongoDB Atlas en Red.
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://wjmmk:Willis_85@locallibrary-syvnh.mongodb.net/test?retryWrites=true&w=majority";
+var url = process.env.MONGODB_URI;
 
+///////////////////////////
+// Codigo que Inserta la Coleccion Estudiantes con el principio de validacion.
 
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
 
+    var myobj = [
+      { name: 'William', year: 30, major: "English", address: 'Medellin'},
+      { name: 50, year: "paz", address: 'Lowstreet 4'},
+    ];   
+dbo.collection("students").insertMany(myobj, function(err, res) {
+  if (err) throw err;
+  console.log("Number of documents inserted: " + res.insertedCount);
+  db.close();
+});
+}); 
+
+////////////////////////
+
+/*
 // Con este codigo se Inserta la Coleccion Clientes ó Customers
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
@@ -36,7 +52,7 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });  
-
+*/
 
 
 ////////////////////////////////////////
@@ -94,3 +110,31 @@ MongoClient.connect(url, function(err, db) {
   });
 }); 
 */
+
+///////////////////////////////
+
+/*
+// Insertar interventores
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+
+  var myobj = [
+  // MongoDB adds the _id field with an ObjectId if _id is not present
+  { item: "journal", qty: 25, status: "A",
+      size: { h: 14, w: 21, uom: "cm" }, tags: [ "blank", "red" ] },
+  { item: "notebook", qty: 50, status: "A",
+      size: { h: 8.5, w: 11, uom: "in" }, tags: [ "red", "blank" ] },
+  { item: "paper", qty: 100, status: "D",
+      size: { h: 8.5, w: 11, uom: "in" }, tags: [ "red", "blank", "plain" ] },
+  { item: "planner", qty: 75, status: "D",
+      size: { h: 22.85, w: 30, uom: "cm" }, tags: [ "blank", "red" ] },
+  { item: "postcard", qty: 45, status: "A",
+      size: { h: 10, w: 15.25, uom: "cm" }, tags: [ "blue" ] }
+];
+dbo.collection("inventory").insertMany(myobj, function(err, res) {
+  if (err) throw err;
+  console.log("Number of documents inserted: " + res.insertedCount);
+  db.close();
+});
+});   */

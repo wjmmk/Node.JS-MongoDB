@@ -5,9 +5,11 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://wjmmk:Willis_85@locallibrary-syvnh.mongodb.net/test?retryWrites=true&w=majority";
 */
 
+require('dotenv').config();// Con esta linea logramos cargar en nuestro programa las variables del archivo .env
+
 // Conexion a MongoDB ~ Atlas Actualizada.
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://wjmmk:Willis_85@locallibrary-syvnh.mongodb.net/test?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
@@ -33,21 +35,3 @@ MongoClient.connect(uri, function(err, db) {
 //document.getElementById('$mongo').innerHTML = $MongoDB;
 //document.getElementById('mongo').innerHTML = respuesta;
 module.exports.result = this.result;
-
-/*
-// Codigo que obtiene una consulta desde MongoDB Localmente.
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("mydb");
-  var query = {address:/^S/};
-  dbo.collection("customers").find(query).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    db.close();
-  });
-});
-
-*/

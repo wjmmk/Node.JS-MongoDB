@@ -1,12 +1,9 @@
+require('dotenv').config();// Con esta linea logramos cargar en nuestro programa las variables del archivo .env
+
 // Configuracion para conectar con MongoDB Atlas en Red.
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://wjmmk:Willis_85@locallibrary-syvnh.mongodb.net/test?retryWrites=true&w=majority";
-
-
-/*  // Configuracion para mongoDB localmente
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url =process.env.MONGODB_URI;
 
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -21,7 +18,3 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });
-/*  // Configuracion para mongoDB localmente
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-*/
