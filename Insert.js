@@ -14,7 +14,12 @@ MongoClient.connect(url, function(err, db) {
 
     var myobj = [
       { name: 'William', year: 30, major: "English", address: 'Medellin'},
-      { name: 50, year: "paz", address: 'Lowstreet 4'},
+      { name: 'Juan', year: 50, address: 'Lowstreet 4'},
+      { name: 'Mariana', year: 20, major: "English", address: 'Cali'},
+      { name: 'Camila', year: 28, major: "English", address: 'Pereira', email: 'Cami_45@gmail.com'},
+      { name: 'Alvaro', year: 32, major: "English", address: 'Cucuta', email: 'Alvarito-01@gmail.com'},
+      { name: 'Wishi', year: 18, major: "English", address: 'Leticia'},
+      { name: 'Ketty', year: 42, major: "English", address: 'Maicao'},
     ];   
 dbo.collection("students").insertMany(myobj, function(err, res) {
   if (err) throw err;

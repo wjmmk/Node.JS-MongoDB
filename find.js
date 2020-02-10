@@ -1,3 +1,9 @@
+/*
+// Conexion a MongoDB Atlas Basica.
+var mongoose = require('mongoose');
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://wjmmk:Willis_85@locallibrary-syvnh.mongodb.net/test?retryWrites=true&w=majority";
+*/
 
 require('dotenv').config();// Con esta linea logramos cargar en nuestro programa las variables del archivo .env
 
